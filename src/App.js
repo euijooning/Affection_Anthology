@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Edit from "./pages/Edit";
 import Log from "./pages/Log";
+import MyButton from "./components/MyButton";
 
 function App() {
 
@@ -13,6 +14,11 @@ function App() {
       <div className="App">
         <h1>App.js file</h1>
         <p>메인 페이지입니다.</p>
+        
+        <MyButton 
+          text={"버튼"} 
+          onClick={() => alert("클릭")} 
+          type={"positive"} />
 
         <Routes>
           <Route path="/" element={<Home />}/>
