@@ -1,3 +1,4 @@
+import { useReducer, useRef } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -5,42 +6,82 @@ import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Edit from "./pages/Edit";
 import Log from "./pages/Log";
-import MyButton from "./components/MyButton";
-import MyHeader from "./components/MyHeader";
 
 function App() {
+  const reducer = (state, action) => {
+    let newState = [];
+
+    switch (action.type) {
+      case "INIT": {
+        return action.data;
+      }
+      case "CREATE": {
+        const newItem = {
+          ...action.data,
+        };
+        newState = [newItem, ...state];
+        break;
+      }
+      case "REMOVE": {
+        newState = state.filter((it) => it.id !== action.targetId);
+        break;
+      }
+      case "EDIT": {
+        newState = state.map((it) =>
+          it.id === action.data.id ? { ...action.data } : it
+        );
+        break;
+      }
+      default:
+        return state;
+    }
+    return newState;
+  };
+
+  const [data, dispatch] = useReducer(reducer, []);
+  const dataId = useRef(0);
+
+  // CREATE
+  const onCreate = (date, content, emotion) => {
+    dispatch({
+      type: "CREATE",
+      data: {
+        id: dataId.current,
+        date: new Date(date).getTime(),
+        content,
+        emotion,
+      },
+    });
+    dataId.current += 1;
+  };
+
+  // REMOVE
+  const onRemove = (targetId) => {
+    dispatch({ type: "REMOVE", targetId });
+  };
+
+  // EDIT
+  const onEdit = (targetId, date, content, emotion) => {
+    dispatch({
+      type: "EDIT",
+      data: {
+        id: dataId.current,
+        date: new Date(date).getTime(),
+        content,
+        emotion,
+      },
+    });
+  };
 
   return (
     <BrowserRouter>
       <div className="App">
-        <MyHeader headText={"App!!!"} 
-          leftChild= { <MyButton text={"왼쪽버튼"} onClick={() => alert("왼쪽 클릭")} /> }
-          rightChild={ <MyButton text={"오른쪽버튼"} onClick={() => alert("오른쪽 클릭")} /> }
-        />
-
-        <h1>App.js file</h1>
-        <p>메인 페이지입니다.</p>
-        
-        <MyButton 
-          text={"버튼"} 
-          onClick={() => alert("클릭")} 
-          type={"positive"} />
-
-        <MyButton 
-          text={"버튼"} 
-          onClick={() => alert("클릭")} 
-          type={"negative"} />  
-
-        <MyButton 
-          text={"버튼"} 
-          onClick={() => alert("클릭")} 
-        />  
-
         <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/create" element={<Create />}/>
-          <Route path="/edit" element={<Edit />}/>
-          <Route path="/log/:id" element={<Log />}/> {/*id가 없는 일기는 없으므로 일단 이렇게 모두 붙도록 작성*/}
+          <Route path="/" element={<Home />} />
+          <Route path="/create" element={<Create />} />
+          <Route path="/edit" element={<Edit />} />
+          <Route path="/log/:id" element={<Log />} />{" "}
+          {/*id가 없는 일기는 없으므로 일단 이렇게 모두 붙도록 작성*/}
         </Routes>
       </div>
     </BrowserRouter>
