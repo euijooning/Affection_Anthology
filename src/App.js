@@ -15,7 +15,7 @@ function App() {
           <Route path="/" element={<Home />}/>
           <Route path="/create" element={<Create />}/>
           <Route path="/edit" element={<Edit />}/>
-          <Route path="/log" element={<Log />}/>
+          <Route path="/log/:id" element={<Log />}/> {/*id가 없는 일기는 없으므로 일단 이렇게 모두 붙도록 작성*/}
         </Routes>
       </div>
     </BrowserRouter>
