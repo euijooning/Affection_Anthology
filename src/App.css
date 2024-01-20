@@ -1,6 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Yeon+Sung&display=swap');
+
+body {
+  font-family: "Nanum Pen Script";
+  background-color: pink;
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
 .App {
   padding: 20px;
   font-family: 'Yeon Sung', system-ui;
   font-family: 'Nanum Pen Script', cursive;
+}
+
+@media(min-width: 650px) {
+  .App {
+    width: 640px;
+  }
+}
+
+@media(max-width: 650px) {
+  .App {
+    width: 90vh;
+  }
+}
+
+#root {
+  background-color: #f7d9d9;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px, 7px, 30px, 0px;
+}
+
+.App {
+  min-height: 100vh;
+  padding-left: 20px;
+  padding-right: 20px;
 }
