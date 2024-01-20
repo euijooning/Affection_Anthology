@@ -1,3 +1,4 @@
+import React from "react";
 import { useReducer, useRef } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -6,6 +7,9 @@ import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Edit from "./pages/Edit";
 import Log from "./pages/Log";
+
+export const LogStateContext = React.createContext();
+export const LogDispatchContext = React.createContext();
 
 function App() {
   const reducer = (state, action) => {
@@ -74,17 +78,27 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/create" element={<Create />} />
-          <Route path="/edit" element={<Edit />} />
-          <Route path="/log/:id" element={<Log />} />{" "}
-          {/*id가 없는 일기는 없으므로 일단 이렇게 모두 붙도록 작성*/}
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <LogStateContext.Provider value={data}>
+      <LogDispatchContext.Provider
+        value={{
+          onCreate,
+          onEdit,
+          onRemove,
+        }}
+      >
+        <BrowserRouter>
+          <div className="App">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/create" element={<Create />} />
+              <Route path="/edit" element={<Edit />} />
+              <Route path="/log/:id" element={<Log />} />{" "}
+              {/*id가 없는 일기는 없으므로 일단 이렇게 모두 붙도록 작성*/}
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </LogDispatchContext.Provider>
+    </LogStateContext.Provider>
   );
 }
 
