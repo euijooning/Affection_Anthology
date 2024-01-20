@@ -11,6 +11,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <h1>App.js file</h1>
+        <p>메인 페이지입니다.</p>
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/create" element={<Create />}/>
