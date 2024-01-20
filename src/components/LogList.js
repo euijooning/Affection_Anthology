@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import MyButton from "./MyButton";
 
 const sortOptionList = [
   { value: "latest", name: "최신순" },
@@ -24,6 +26,7 @@ const ControlMenu = ({ value, onChange, optionList }) => {
 };
 
 const LogList = ({ logList }) => {
+  const navigate = useNavigate();
   // 정렬 기준을 저장할 state(시간순)
   const [sortType, setSortType] = useState("latest");
 
@@ -69,6 +72,11 @@ const LogList = ({ logList }) => {
         value={emotionFilter}
         onChange={setEmotionFilter}
         optionList={emotionOptionList}
+      />
+      <MyButton
+        type={"positive"}
+        text={"일기 작성하기"}
+        onClick={() => navigate("/create")}
       />
       {getProcessedLogList().map((it) => (
         <div key={it.id}>
