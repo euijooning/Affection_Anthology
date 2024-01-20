@@ -20,6 +20,16 @@ function App() {
           onClick={() => alert("클릭")} 
           type={"positive"} />
 
+        <MyButton 
+          text={"버튼"} 
+          onClick={() => alert("클릭")} 
+          type={"negative"} />  
+
+        <MyButton 
+          text={"버튼"} 
+          onClick={() => alert("클릭")} 
+        />  
+
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/create" element={<Create />}/>

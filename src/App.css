@@ -53,5 +53,19 @@ body {
   font-size: 18px;
   white-space: nowrap;
   font-family: "Nanum Pen Script";
+}
 
+.MyButton_default {
+  background-color: #ececec;
+  color: #000000;
+}
+
+.MyButton_positive {
+  background-color: green;
+  color: white;
+}
+
+.MyButton_negative {
+  background-color: orangered;
+  color: white;
 }
