@@ -106,3 +106,37 @@ header .head_btn_right {
 header button {
   font-family: "Nanum Pen Script";
 }
+
+/*LogList*/
+
+.LogList .menu_wrapper {
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.LogList .menu_wrapper .right_column {
+  flex-grow: 1; /* right_column이 가능한 최대 너비를 가지도록 */
+}
+
+.LogList .menu_wrapper .right_column button {
+   width: 100%; /* 빈공간 없도록  */
+}
+
+.LogList .ControlMenu {
+  font-family: "Nanum Pen Script";
+  font-size: 20px;
+  cursor: pointer;
+  
+  margin-right: 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #ececec;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}

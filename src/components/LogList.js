@@ -15,7 +15,11 @@ const emotionOptionList = [
 
 const ControlMenu = ({ value, onChange, optionList }) => {
   return (
-    <select value={value} onChange={(e) => onChange(e.target.value)}>
+    <select
+      className="ControlMenu"
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+    >
       {optionList.map((it, idx) => (
         <option key={idx} value={it.value}>
           {it.name}
@@ -62,22 +66,29 @@ const LogList = ({ logList }) => {
   };
 
   return (
-    <div>
-      <ControlMenu
-        value={sortType}
-        onChange={setSortType}
-        optionList={sortOptionList}
-      />
-      <ControlMenu
-        value={emotionFilter}
-        onChange={setEmotionFilter}
-        optionList={emotionOptionList}
-      />
-      <MyButton
-        type={"positive"}
-        text={"일기 작성하기"}
-        onClick={() => navigate("/create")}
-      />
+    <div className="LogList">
+      <div className="menu_wrapper">
+        <div className="left_column">
+          <ControlMenu
+            value={sortType}
+            onChange={setSortType}
+            optionList={sortOptionList}
+          />
+          <ControlMenu
+            value={emotionFilter}
+            onChange={setEmotionFilter}
+            optionList={emotionOptionList}
+          />
+        </div>
+        <div className="right_column">
+          <MyButton
+            type={"positive"}
+            text={"일기 작성하기"}
+            onClick={() => navigate("/create")}
+          />
+        </div>
+      </div>
+
       {getProcessedLogList().map((it) => (
         <div key={it.id}>
           {it.content} {it.emotion}
