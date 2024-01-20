@@ -53,7 +53,7 @@ const LogList = ({ logList }) => {
     const filteredList =
       emotionFilter === "all"
         ? copyList
-        : copyList.emotionFilter((it) => filterCallBack(it));
+        : copyList.filter((it) => filterCallBack(it));
     const sortedList = filteredList.sort(compare); // 이것도 변경
     return sortedList;
   };
