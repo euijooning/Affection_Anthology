@@ -52,11 +52,13 @@ function App() {
       const logList = JSON.parse(localData).sort(
         (a, b) => parseInt(b.id) - parseInt(a.id)
       );
-      dataId.current = parseInt(logList[0].id) + 1;
 
+      if (logList.length >= 1) {
+        dataId.current = parseInt(logList[0].id) + 1;
+        dispatch({ type: "INIT", data: logList });
+      }
       // console.log(logList);
       // console.log(dataId);
-      dispatch({type:"INIT", data:logList})
     }
   }, []);
 
