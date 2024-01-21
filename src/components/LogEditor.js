@@ -1,20 +1,19 @@
 import React, { useContext, useEffect } from "react";
 import { useState, useRef } from "react";
-import MyHeader from "./MyHeader";
-import MyButton from "./MyButton";
 import { useNavigate } from "react-router-dom";
+
 import EmotionItem from "./EmotionItem";
 import { LogDispatchContext } from "../App";
 import { getStringDate } from "../util/date";
 import { emotionList } from "../util/emotion";
-
-
+import MyHeader from "./MyHeader";
+import MyButton from "./MyButton";
 
 const LogEditor = ({ isEdit, originData }) => {
-  const navigate = useNavigate(getStringDate(new Date()));
+  const navigate = useNavigate();
 
   // input_box의 날짜를 핸들링할 state
-  const [date, setDate] = useState();
+  const [date, setDate] = useState(getStringDate(new Date()));
 
   // 클릭 이벤트를 처리할 state
   const [emotion, setEmotion] = useState(3); // 보통 상태를 일단 디폴트로
@@ -37,7 +36,11 @@ const LogEditor = ({ isEdit, originData }) => {
     }
 
     // 수정인지 아닌지를 확인 <= 추가한 사항
-    if (window.confirm( isEdit ? "수정하시겠습니까?" : "새로운 기록을 남기시겠습니까?")) {
+    if (
+      window.confirm(
+        isEdit ? "수정하시겠습니까?" : "새로운 기록을 남기시겠습니까?"
+      )
+    ) {
       if (!isEdit) {
         // 수정중이 아닐 때
         onCreate(date, content, emotion); // 새 기록 생성
