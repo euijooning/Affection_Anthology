@@ -23,7 +23,10 @@ const Home = () => {
       const lastDay = new Date(
         nowDate.getFullYear(),
         nowDate.getMonth() + 1,
-        0 // 가장 마지막 날짜
+        0, // 가장 마지막 날짜
+        23,
+        59,
+        59
       ).getTime();
 
       setData(
