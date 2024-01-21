@@ -14,19 +14,19 @@ export const LogDispatchContext = React.createContext();
 const dummyData = [
   {
     id: 1,
-    emotion: 1,
+    emotion: 5,
     content: "테스트 내용 1번",
     date: 1705752944616, //   console.log(new Date().getTime()); 찍어보면 나오는 값
   },
   {
     id: 2,
-    emotion: 3,
+    emotion: 4,
     content: "테스트 내용 2번",
     date: 1705752944618, //   console.log(new Date().getTime()); 찍어보면 나오는 값
   },
   {
     id: 3,
-    emotion: 5,
+    emotion: 3,
     content: "테스트 내용 3번",
     date: 1705752944619, //   console.log(new Date().getTime()); 찍어보면 나오는 값
   },

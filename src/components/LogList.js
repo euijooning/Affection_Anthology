@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MyButton from "./MyButton";
+import LogItem from "./LogItem";
 
 const sortOptionList = [
   { value: "latest", name: "최신순" },
@@ -90,9 +91,7 @@ const LogList = ({ logList }) => {
       </div>
 
       {getProcessedLogList().map((it) => (
-        <div key={it.id}>
-          {it.content} {it.emotion}
-        </div>
+        <LogItem key={it.id} {...it} />
       ))}
     </div>
   );
