@@ -5,6 +5,8 @@ const LogItem = ({ id, emotion, content, date }) => {
   const env = process.env;
   env.PUBLIC_URL = env.PUBLIC_URL || "";
 
+  const strDate = new Date(parseInt(date)).toLocaleDateString();
+
   return (
     <div className="LogItem">
       <div
@@ -16,7 +18,10 @@ const LogItem = ({ id, emotion, content, date }) => {
         {/* 여기 이미지 */}
         <img src={process.env.PUBLIC_URL + `assets/emotion${emotion}.png`} />
       </div>
-      <div></div>
+      <div className="info_wrapper">
+        <div className="log_date">{strDate}</div>
+        <div className="log_content_preview">{content.slice(0,25)}</div>
+      </div>
       <div></div>
     </div>
   );

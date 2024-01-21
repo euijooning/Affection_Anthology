@@ -183,3 +183,19 @@ header button {
 .LogItem .emotion_img_wrapper img {
   width: 50%;
 }
+
+.LogItem .info_wrapper {
+  flex-grow: 1;
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+.LogItem .log_date {
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.LogItem .log_content_preview {
+  font-size: 15px;
+}
