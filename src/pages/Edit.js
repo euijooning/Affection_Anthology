@@ -1,30 +1,35 @@
-import React from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { LogStateContext } from "../App";
+import LogEditor from "../components/LogEditor";
 
 const Edit = () => {
-  
-  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { id } = useParams();
+  const logList = useContext(LogStateContext);
+  // console.log(id);
+  // console.log(logList);
+  const [originData, setOriginData] = useState();
 
-  const id = searchParams.get("id");
-  console.log("id :" + id);
+  useEffect(() => {
+    if (logList.length >= 1) {
+      // 데이터가 한개라도 있어야
+      const targetLog = logList.find((it) => parseInt(it.id) === parseInt(id));
+      // console.log(targetLog);
 
-  const mode = searchParams.get("mode");
-  console.log("mode : " + mode);
+      // 잘못된 id값을 전달하는 경우에 대한 처리 작업도 필요함.
+      // truthy / falsy 활용.
+      if (targetLog) {
+        setOriginData(targetLog);
+      } else {
+        navigate("/", { replace: true }); // 홈으로 돌려보내고, 뒤로가기 금지
+      }
+    }
+  });
 
   return (
     <div>
-      <h1>Edit</h1>
-      <p>This is Edit page</p>
-      
-      <button onClick={() => setSearchParams({who : "newjeans"})}> 쿼리스트링 변경 </button>
-      
-      <button onClick={() => {
-        navigate("/home");
-      }}>홈으로 가기 </button>
-      <button onClick={() => {
-        navigate(-1);
-      }}>뒤로 가기 </button>
+      {originData && <LogEditor isEdit={true} originData={originData} />}
     </div>
   );
 };

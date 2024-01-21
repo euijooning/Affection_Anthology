@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState, useRef } from "react";
 import MyHeader from "./MyHeader";
 import MyButton from "./MyButton";
@@ -42,7 +42,7 @@ const getStringDate = (date) => {
   return date.toISOString().slice(0, 10);
 };
 
-const LogEditor = () => {
+const LogEditor = ({ isEdit, originData }) => {
   const navigate = useNavigate(getStringDate(new Date()));
 
   // input_box의 날짜를 핸들링할 state
@@ -58,25 +58,45 @@ const LogEditor = () => {
   // 오늘의 기록을 매핑할 state
   const [content, setContent] = useState("");
   const contentRef = useRef();
-  
+
   // useContext 사용해서 onCreate하고 연동을 시켜줘야 저장이 되니까.
-  const { onCreate } = useContext(LogDispatchContext);
+  const { onCreate, onEdit } = useContext(LogDispatchContext);
   // 가장 아래 버튼 입력 처리할 함수
   const handleSubmit = () => {
     if (content.length < 1) {
       contentRef.current.focus();
       return;
     }
-    // 적절하면 onCreate() 함수를 불러서 생성하게 만든다.
-    onCreate(date, content, emotion);
-    navigate('/', { replace: true})
+
+    // 수정인지 아닌지를 확인 <= 추가한 사항
+    if (
+      window.confirm(
+        isEdit ? "수정하시겠습니까?" : "새로운 기록을 남기시겠습니까?"
+      )
+    ) {
+      if (!isEdit) {
+        // 수정중이 아닐 때
+        onCreate(date, content, emotion); // 새 기록 생성
+      } else {
+        onEdit(originData.id, date, content, emotion);
+      }
+    }
+    navigate("/", { replace: true });
   };
 
+  // 수정 시 작동
+  useEffect(() => {
+    if (isEdit) {
+      setDate(getStringDate(new Date(parseInt(originData.date))));
+      setEmotion(originData.emotion);
+      setContent(originData.date);
+    }
+  }, [isEdit, originData]);
 
   return (
     <div className="LogEditor">
       <MyHeader
-        headText={"기록 남기기"}
+        headText={isEdit ? "기록 수정하기" : "기록 남기기"}
         leftChild={<MyButton text={"< 뒤로"} onClick={() => navigate(-1)} />}
       />
       <div>
@@ -117,7 +137,11 @@ const LogEditor = () => {
         </section>
         <section>
           <div className="control_box">
-            <MyButton text={"저장하기"} type={"positive"} onClick={handleSubmit} />
+            <MyButton
+              text={"저장하기"}
+              type={"positive"}
+              onClick={handleSubmit}
+            />
             <MyButton text={"취소하기"} onClick={() => navigate(-1)} />
           </div>
         </section>
