@@ -312,3 +312,52 @@ header button {
   background-color: #fd565f;
   color: white;
 }
+
+/* Log */
+
+.LogPage section {
+  width: 100%;
+  margin-bottom: 100px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: bold;
+}
+
+.LogPage h4 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.LogPage .log_img_wrapper {
+  background-color: #ececec;
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.LogPage .log_img_wrapper_1 {
+  background-color: green;
+}
+.LogPage .log_img_wrapper_2 {
+  background-color: #64c964;
+}
+.LogPage .log_img_wrapper_3 {
+  background-color: #fdce17;
+}
+.LogPage .log_img_wrapper_4 {
+  background-color: #fd8446;
+}
+.LogPage .log_img_wrapper_5 {
+  background-color: #fd565f;
+}
+
+.LogPage .emotion_description {
+  font-size: 25px;
+  color: white;
+}
