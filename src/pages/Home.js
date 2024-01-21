@@ -11,6 +11,12 @@ const Home = () => {
   const [nowDate, setNowDate] = useState(new Date());
   const headText = `${nowDate.getFullYear()}년 ${nowDate.getMonth() + 1}월`;
 
+  // 페이지마다 다른 타이틀 만들게 하기
+  useEffect(() => {
+    const titleElement = document.getElementsByTagName("title")[0];
+    titleElement.innerHTML = `정감문집[情感文集]`;
+  }, []);
+
   useEffect(() => {
     if (logList.length >= 1) {
       // 먼저 현재 연도와 월의 가장 첫번째 날짜를 구한다.
