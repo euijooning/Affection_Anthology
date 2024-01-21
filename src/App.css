@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Yeon+Sung&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Yeon+Sung&display=swap&family=Gowun+Dodum&display=swap');
 
 body {
   font-family: "Nanum Pen Script";
@@ -14,6 +14,7 @@ body {
   padding: 20px;
   font-family: 'Yeon Sung', system-ui;
   font-family: 'Nanum Pen Script', cursive;
+  font-family: 'Gowun Dodum', sans-serif;
 }
 
 @media(min-width: 650px) {
@@ -360,4 +361,21 @@ header button {
 .LogPage .emotion_description {
   font-size: 25px;
   color: white;
+}
+
+.LogPage .log_content_wrapper {
+  width: 100%;
+  word-break: keep-all; /* 줄 바꿀 때 단어 쪼개지 말자 */
+  overflow-wrap: break-word; /* 길어질 경우 줄바꿈 강제 */
+  border-radius: 5px;
+  background-color: #ececec;
+}
+
+.LogPage .log_content_wrapper {
+  padding: 20px;
+  text-align: left;
+  font-size: 20px;
+  font-family: "Gowun Dodum";
+  font-weight: 200;
+  line-height: 2.5;
 }

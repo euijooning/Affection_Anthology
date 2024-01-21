@@ -64,6 +64,12 @@ const Log = () => {
               </div>
             </div>
           </section>
+          <section>
+            <h4>오늘의 기록</h4>
+            <div className="log_content_wrapper">
+              <p>{data.content}</p>
+            </div>
+          </section>
         </article>
       </div>
     );
