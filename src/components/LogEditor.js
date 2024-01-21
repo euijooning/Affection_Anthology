@@ -69,11 +69,7 @@ const LogEditor = ({ isEdit, originData }) => {
     }
 
     // 수정인지 아닌지를 확인 <= 추가한 사항
-    if (
-      window.confirm(
-        isEdit ? "수정하시겠습니까?" : "새로운 기록을 남기시겠습니까?"
-      )
-    ) {
+    if (window.confirm( isEdit ? "수정하시겠습니까?" : "새로운 기록을 남기시겠습니까?")) {
       if (!isEdit) {
         // 수정중이 아닐 때
         onCreate(date, content, emotion); // 새 기록 생성
@@ -89,7 +85,7 @@ const LogEditor = ({ isEdit, originData }) => {
     if (isEdit) {
       setDate(getStringDate(new Date(parseInt(originData.date))));
       setEmotion(originData.emotion);
-      setContent(originData.date);
+      setContent(originData.content);
     }
   }, [isEdit, originData]);
 

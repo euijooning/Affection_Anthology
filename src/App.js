@@ -16,31 +16,31 @@ const dummyData = [
     id: 1,
     emotion: 5,
     content: "테스트 내용 1번",
-    date: 1705752944616, //   console.log(new Date().getTime()); 찍어보면 나오는 값
+    date: new Date().getTime() - 1, //   console.log(new Date().getTime()); 찍어보면 나오는 값
   },
   {
     id: 2,
     emotion: 4,
     content: "테스트 내용 2번",
-    date: 1705752944618, //   console.log(new Date().getTime()); 찍어보면 나오는 값
+    date: new Date().getTime() - 2, //   console.log(new Date().getTime()); 찍어보면 나오는 값
   },
   {
     id: 3,
     emotion: 3,
     content: "테스트 내용 3번",
-    date: 1705752944619, //   console.log(new Date().getTime()); 찍어보면 나오는 값
+    date: new Date().getTime() - 3, //   console.log(new Date().getTime()); 찍어보면 나오는 값
   },
   {
     id: 4,
     emotion: 2,
     content: "테스트 내용 4번",
-    date: 1705752944620, //   console.log(new Date().getTime()); 찍어보면 나오는 값
+    date: new Date().getTime() - 4, //   console.log(new Date().getTime()); 찍어보면 나오는 값
   },
   {
     id: 5,
     emotion: 1,
     content: "테스트 내용 5번",
-    date: 1705752944621, //   console.log(new Date().getTime()); 찍어보면 나오는 값
+    date: new Date().getTime() - 5, //   console.log(new Date().getTime()); 찍어보면 나오는 값
   },
 ];
 

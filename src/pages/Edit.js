@@ -14,7 +14,9 @@ const Edit = () => {
   useEffect(() => {
     if (logList.length >= 1) {
       // 데이터가 한개라도 있어야
-      const targetLog = logList.find((it) => parseInt(it.id) === parseInt(id));
+      const targetLog = logList.find(
+        (it) => parseInt(it.id) === parseInt(id)
+        );
       // console.log(targetLog);
 
       // 잘못된 id값을 전달하는 경우에 대한 처리 작업도 필요함.
@@ -25,7 +27,7 @@ const Edit = () => {
         navigate("/", { replace: true }); // 홈으로 돌려보내고, 뒤로가기 금지
       }
     }
-  });
+  },[id, logList]);
 
   return (
     <div>
