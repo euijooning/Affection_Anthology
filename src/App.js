@@ -103,7 +103,7 @@ function App() {
     dispatch({
       type: "EDIT",
       data: {
-        id: dataId.current,
+        id: targetId,
         date: new Date(date).getTime(),
         content,
         emotion,
