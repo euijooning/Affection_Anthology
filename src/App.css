@@ -199,3 +199,7 @@ header button {
 .LogItem .log_content_preview {
   font-size: 15px;
 }
+
+.LogItem .button_wrapper {
+  min-width: 70px;
+}

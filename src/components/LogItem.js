@@ -1,4 +1,5 @@
 import React from "react";
+import MyButton from "./MyButton";
 
 const LogItem = ({ id, emotion, content, date }) => {
   // 혹시 모르니 예외처리
@@ -22,7 +23,9 @@ const LogItem = ({ id, emotion, content, date }) => {
         <div className="log_date">{strDate}</div>
         <div className="log_content_preview">{content.slice(0,25)}</div>
       </div>
-      <div></div>
+      <div className="button_wrapper">
+        <MyButton text={"수정하기"} />
+      </div>
     </div>
   );
 };
