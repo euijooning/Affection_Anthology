@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useReducer, useRef } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -11,41 +11,7 @@ import Log from "./pages/Log";
 export const LogStateContext = React.createContext();
 export const LogDispatchContext = React.createContext();
 
-const dummyData = [
-  {
-    id: 1,
-    emotion: 5,
-    content: "테스트 내용 1번",
-    date: new Date().getTime() - 1, //   console.log(new Date().getTime()); 찍어보면 나오는 값
-  },
-  {
-    id: 2,
-    emotion: 4,
-    content: "테스트 내용 2번",
-    date: new Date().getTime() - 2, //   console.log(new Date().getTime()); 찍어보면 나오는 값
-  },
-  {
-    id: 3,
-    emotion: 3,
-    content: "테스트 내용 3번",
-    date: new Date().getTime() - 3, //   console.log(new Date().getTime()); 찍어보면 나오는 값
-  },
-  {
-    id: 4,
-    emotion: 2,
-    content: "테스트 내용 4번",
-    date: new Date().getTime() - 4, //   console.log(new Date().getTime()); 찍어보면 나오는 값
-  },
-  {
-    id: 5,
-    emotion: 1,
-    content: "테스트 내용 5번",
-    date: new Date().getTime() - 5, //   console.log(new Date().getTime()); 찍어보면 나오는 값
-  },
-];
-
 function App() {
-
   const reducer = (state, action) => {
     let newState = [];
 
@@ -73,11 +39,26 @@ function App() {
       default:
         return state;
     }
+    localStorage.setItem("log", JSON.stringify(newState));
     return newState;
   };
 
-  const [data, dispatch] = useReducer(reducer, dummyData);
-  const dataId = useRef(6);
+  const [data, dispatch] = useReducer(reducer, []);
+  const dataId = useRef(0);
+
+  useEffect(() => {
+    const localData = localStorage.getItem("log");
+    if (localData) {
+      const logList = JSON.parse(localData).sort(
+        (a, b) => parseInt(b.id) - parseInt(a.id)
+      );
+      dataId.current = parseInt(logList[0].id) + 1;
+
+      // console.log(logList);
+      // console.log(dataId);
+      dispatch({type:"INIT", data:logList})
+    }
+  }, []);
 
   // CREATE
   const onCreate = (date, content, emotion) => {
