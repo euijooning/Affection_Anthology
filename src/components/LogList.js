@@ -14,7 +14,7 @@ const emotionOptionList = [
   { value: "bad", name: "나쁜 감정만" },
 ];
 
-const ControlMenu = ({ value, onChange, optionList }) => {
+const ControlMenu = React.memo(({ value, onChange, optionList }) => {
   return (
     <select
       className="ControlMenu"
@@ -28,7 +28,7 @@ const ControlMenu = ({ value, onChange, optionList }) => {
       ))}
     </select>
   );
-};
+});
 
 const LogList = ({ logList }) => {
   const navigate = useNavigate();

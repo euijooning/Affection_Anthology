@@ -40,4 +40,4 @@ const LogItem = ({ id, emotion, content, date }) => {
   );
 };
 
-export default LogItem;
+export default React.memo(LogItem);

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -18,9 +18,9 @@ const LogEditor = ({ isEdit, originData }) => {
   // 클릭 이벤트를 처리할 state
   const [emotion, setEmotion] = useState(3); // 보통 상태를 일단 디폴트로
   // 감정을 클릭했을 때 작업을 수행할 함수도 생성
-  const handleClickEmotion = (emotion) => {
+  const handleClickEmotion = useCallback((emotion) => {
     setEmotion(emotion);
-  };
+  }, []);
 
   // 오늘의 기록을 매핑할 state
   const contentRef = useRef();
