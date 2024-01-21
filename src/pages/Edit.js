@@ -11,6 +11,12 @@ const Edit = () => {
   // console.log(id);
   // console.log(logList);
 
+    // 페이지마다 다른 타이틀 만들게 하기
+    useEffect(() => {
+      const titleElement = document.getElementsByTagName("title")[0];
+      titleElement.innerHTML = `${id}번째 기록 수정`;
+    }, []);
+
   useEffect(() => {
     if (logList.length >= 1) {
       // 데이터가 한개라도 있어야

@@ -14,6 +14,12 @@ const Log = () => {
   // 일기가 존재할 때는 state로 할당 받아주면 된다.
   const [data, setData] = useState();
 
+  // 페이지마다 다른 타이틀 만들게 하기
+  useEffect(() => {
+    const titleElement = document.getElementsByTagName("title")[0];
+    titleElement.innerHTML = `정감문집 - ${id}번째 기록`;
+  }, []);
+
   useEffect(() => {
     if (logList.length >= 1) {
       const targetLog = logList.find((it) => parseInt(it.id) === parseInt(id));
