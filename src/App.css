@@ -254,6 +254,12 @@ header button {
   background-color: #e2e2e2;
 }
 
+.LogEditor .control_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 
 /* EmotionItem */
 

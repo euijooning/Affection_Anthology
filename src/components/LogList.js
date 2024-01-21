@@ -84,7 +84,7 @@ const LogList = ({ logList }) => {
         <div className="right_column">
           <MyButton
             type={"positive"}
-            text={"일기 작성하기"}
+            text={"기록 남기기"}
             onClick={() => navigate("/create")}
           />
         </div>

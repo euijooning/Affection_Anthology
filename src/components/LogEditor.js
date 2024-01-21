@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState, useRef } from "react";
 import MyHeader from "./MyHeader";
 import MyButton from "./MyButton";
 import { useNavigate } from "react-router-dom";
 import EmotionItem from "./EmotionItem";
+import { LogDispatchContext } from "../App";
 
 // 여기도 혹시 모르니 예외처리
 const env = process.env;
@@ -57,11 +58,25 @@ const LogEditor = () => {
   // 오늘의 기록을 매핑할 state
   const [content, setContent] = useState("");
   const contentRef = useRef();
+  
+  // useContext 사용해서 onCreate하고 연동을 시켜줘야 저장이 되니까.
+  const { onCreate } = useContext(LogDispatchContext);
+  // 가장 아래 버튼 입력 처리할 함수
+  const handleSubmit = () => {
+    if (content.length < 1) {
+      contentRef.current.focus();
+      return;
+    }
+    // 적절하면 onCreate() 함수를 불러서 생성하게 만든다.
+    onCreate(date, content, emotion);
+    navigate('/', { replace: true})
+  };
+
 
   return (
     <div className="LogEditor">
       <MyHeader
-        headText={"일기 작성하기"}
+        headText={"기록 남기기"}
         leftChild={<MyButton text={"< 뒤로"} onClick={() => navigate(-1)} />}
       />
       <div>
@@ -98,6 +113,12 @@ const LogEditor = () => {
               onChange={(e) => setContent(e.target.value)}
               placeholder="오늘 겪었던 이런저런 이야기를 남겨주세요!"
             />
+          </div>
+        </section>
+        <section>
+          <div className="control_box">
+            <MyButton text={"저장하기"} type={"positive"} onClick={handleSubmit} />
+            <MyButton text={"취소하기"} onClick={() => navigate(-1)} />
           </div>
         </section>
       </div>
