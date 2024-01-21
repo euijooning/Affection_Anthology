@@ -23,8 +23,8 @@ const LogEditor = ({ isEdit, originData }) => {
   };
 
   // 오늘의 기록을 매핑할 state
-  const [content, setContent] = useState("");
   const contentRef = useRef();
+  const [content, setContent] = useState("");
 
   // useContext 사용해서 onCreate하고 연동을 시켜줘야 저장이 되니까.
   const { onCreate, onEdit } = useContext(LogDispatchContext);
