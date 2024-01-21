@@ -27,7 +27,8 @@ const LogEditor = ({ isEdit, originData }) => {
   const [content, setContent] = useState("");
 
   // useContext 사용해서 onCreate하고 연동을 시켜줘야 저장이 되니까.
-  const { onCreate, onEdit } = useContext(LogDispatchContext);
+  // 수정 때문에 onEdit, 삭제 때문에 onRemove 도 받아온다!
+  const { onCreate, onEdit, onRemove } = useContext(LogDispatchContext);
   // 가장 아래 버튼 입력 처리할 함수
   const handleSubmit = () => {
     if (content.length < 1) {
@@ -51,6 +52,13 @@ const LogEditor = ({ isEdit, originData }) => {
     navigate("/", { replace: true });
   };
 
+  const handleRemove = () => {
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      onRemove(originData.id); // => targetId 에 해당.
+      navigate("/", { replace: true }); // 삭제 완료되면 홈으로 보내고, 뒤로가기 금지
+    }
+  };
+
   // 수정 시 작동
   useEffect(() => {
     if (isEdit) {
@@ -65,6 +73,7 @@ const LogEditor = ({ isEdit, originData }) => {
       <MyHeader
         headText={isEdit ? "기록 수정하기" : "기록 남기기"}
         leftChild={<MyButton text={"< 뒤로"} onClick={() => navigate(-1)} />}
+        rightChild={isEdit && <MyButton text={"삭제하기"} type={"negative"} onClick={handleRemove} />}
       />
       <div>
         <section>
