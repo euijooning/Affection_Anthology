@@ -24,6 +24,7 @@ const Edit = () => {
       if (targetLog) {
         setOriginData(targetLog);
       } else {
+        alert("존재하지 않는 기록입니다.")
         navigate("/", { replace: true }); // 홈으로 돌려보내고, 뒤로가기 금지
       }
     }

@@ -5,6 +5,7 @@ import MyButton from "./MyButton";
 import { useNavigate } from "react-router-dom";
 import EmotionItem from "./EmotionItem";
 import { LogDispatchContext } from "../App";
+import { getStringDate } from "../util/date";
 
 // 여기도 혹시 모르니 예외처리
 const env = process.env;
@@ -38,9 +39,6 @@ const emotionList = [
   },
 ];
 
-const getStringDate = (date) => {
-  return date.toISOString().slice(0, 10);
-};
 
 const LogEditor = ({ isEdit, originData }) => {
   const navigate = useNavigate(getStringDate(new Date()));
