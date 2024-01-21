@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import MyHeader from "./MyHeader";
 import MyButton from "./MyButton";
 import { useNavigate } from "react-router-dom";
@@ -54,6 +54,10 @@ const LogEditor = () => {
     setEmotion(emotion);
   };
 
+  // 오늘의 기록을 매핑할 state
+  const [content, setContent] = useState("");
+  const contentRef = useRef();
+
   return (
     <div className="LogEditor">
       <MyHeader
@@ -80,9 +84,20 @@ const LogEditor = () => {
                 key={it.emotion_id}
                 {...it}
                 onClick={handleClickEmotion}
-                isSelected = {it.emotion_id === emotion}
+                isSelected={it.emotion_id === emotion}
               />
             ))}
+          </div>
+        </section>
+        <section>
+          <h4>오늘의 기록</h4>
+          <div className="input_box text_wrapper">
+            <textarea
+              ref={contentRef}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              placeholder="오늘 겪었던 이런저런 이야기를 남겨주세요!"
+            />
           </div>
         </section>
       </div>

@@ -238,6 +238,23 @@ header button {
   gap: 2%;
 }
 
+
+.LogEditor textarea {
+  font-family: "Nanum Pen Script";
+  font-size: 20px;
+
+  width: 100%; /*크기 고정*/
+  resize: vertical; /*가로로는 텍스트박스를 늘릴 수 없게*/
+  min-height: 200px;
+  box-sizing: border-box;
+
+  padding: 20px; 
+  border: none;
+  border-radius: 3px;
+  background-color: #e2e2e2;
+}
+
+
 /* EmotionItem */
 
 .EmotionItem {
