@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "sites" : "dynamic-feeling-log.web.app",
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
