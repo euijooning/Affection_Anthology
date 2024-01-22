@@ -15,6 +15,7 @@ const Edit = () => {
     useEffect(() => {
       const titleElement = document.getElementsByTagName("title")[0];
       titleElement.innerHTML = `${id}번째 기록 수정`;
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
   useEffect(() => {
@@ -32,6 +33,7 @@ const Edit = () => {
         navigate("/", { replace: true }); // 홈으로 돌려보내고, 뒤로가기 금지
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, logList]);
 
   return (

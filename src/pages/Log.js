@@ -18,6 +18,7 @@ const Log = () => {
   useEffect(() => {
     const titleElement = document.getElementsByTagName("title")[0];
     titleElement.innerHTML = `정감문집 - ${id}번째 기록`;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -33,6 +34,7 @@ const Log = () => {
         navigate("/", { replace: true });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, logList]);
 
   if (!data) {
