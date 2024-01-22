@@ -27,7 +27,7 @@ const LogItem = ({ id, emotion, content, date }) => {
         ].join(" ")} // 공백 한 칸 띄워주고 구분
       >
         {/* 여기 이미지 */}
-        <img src={process.env.PUBLIC_URL + `assets/emotion${emotion}.png`} />
+        <img src={process.env.PUBLIC_URL + `assets/emotion${emotion}.png`} alt="img" />
       </div>
       <div onClick={moveLogDetail} className="info_wrapper">
         <div className="log_date">{strDate}</div>

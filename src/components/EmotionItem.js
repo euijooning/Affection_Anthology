@@ -15,7 +15,7 @@ const EmotionItem = ({
       ].join(" ")}
       onClick={() => onClick(emotion_id)}
     >
-      <img src={emotion_img} />
+      <img src={emotion_img} alt="img" />
       <span>{emotion_description}</span>
     </div>
   );

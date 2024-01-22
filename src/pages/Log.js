@@ -64,7 +64,7 @@ const Log = () => {
                 `log_img_wrapper_${data.emotion}`,
               ].join(" ")}
             >
-              <img src={nowEmotionData.emotion_img} />
+              <img src={nowEmotionData.emotion_img} alt="img" />
               <div className="emotion_description">
                 {nowEmotionData.emotion_description}
               </div>
