@@ -4,6 +4,8 @@
 ---
 
 ### ✏️ 직접 체험하기
+📘아래 링크에서 직접 입력해보실 수 있습니다.
 - https://feelinglog.netlify.app/
+
 ### 🎥 시연 영상
-- https://www.youtube.com/watch?v=0gvOH6sBl-M
+- https://youtu.be/8KT7spZ3y3Q
